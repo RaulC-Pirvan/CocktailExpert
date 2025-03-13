@@ -11,14 +11,34 @@ data_model = api.model('Data Model', {
 })
 
 data_store = {
-    "message:" "Hello, World!"
+    "message": "Hello, World!"
 }
 
 # GET Request
-@ns.route('/')
+@ns.route('/get')
 class GetData(Resource):
     def get(self):
         return data_store, 200
+
+
+# POST Request
+@ns.route('/post')
+class PostData(Resource):
+    @api.expect(data_model)
+    def post(self):
+        data = request.get_json()
+
+        if not data or 'message' not in data:
+            return {
+                "error": "No message provided"
+            }, 400
+
+        data_store["message"] = data["message"]
+        return {
+            "message": "Data received successfully"
+        }, 201
+
+api.add_namespace(ns)
 
 if __name__ == '__main__':
     app.run(debug=True)
