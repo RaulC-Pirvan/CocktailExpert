@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_restx import Api, Resource, fields
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 api = Api(app, version='1.0', title='Cocktail Expert', description='A simple Flask API with Swagger support')
 ns = api.namespace('data', description='Data operations')
