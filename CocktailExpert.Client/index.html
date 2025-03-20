@@ -13,85 +13,97 @@
         <h1><span class="accent">COCKTAIL</span> EXPERT</h1>
       </div>
       <div class="container">
-        <div class="card">
-            <div class="card-title">
-                <h1>WHAT YOU HAVE</h1>
+        <div class="ingredient-card">
+          <div class="card-title">
+            <h1>WHAT YOU HAVE</h1>
+          </div>
+          <div class="card-content">
+            <div class="ingredients-stack">
+              <button class="ingredient-container">
+                <div class="ingredient-photo-container">
+                  <img src="Assets/vodka.jpg" alt="" />
+                </div>
+                <div class="ingredient-name-container">
+                  <p>VODKA</p>
+                </div>
+              </button>
+              <button class="ingredient-container">
+                <div class="ingredient-photo-container">
+                  <img src="Assets/prosecco.jpg" alt="" />
+                </div>
+                <div class="ingredient-name-container">
+                  <p>PROSECCO</p>
+                </div>
+              </button>
+              <button class="ingredient-container">
+                <div class="ingredient-photo-container">
+                  <img src="Assets/rum.jpg" alt="" />
+                </div>
+                <div class="ingredient-name-container">
+                  <p>RUM</p>
+                </div>
+              </button>
+              <button class="ingredient-container">
+                <div class="ingredient-photo-container">
+                  <img src="Assets/champagne.jpg" alt="" />
+                </div>
+                <div class="ingredient-name-container">
+                  <p>CHAMPAGNE</p>
+                </div>
+              </button>
+              <button class="ingredient-container">
+                <div class="ingredient-photo-container">
+                  <img src="Assets/cointreau.jpg" alt="" />
+                </div>
+                <div class="ingredient-name-container">
+                  <p>COINTREAU</p>
+                </div>
+              </button>
             </div>
-            <div class="card-content">
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
+            <div class="ingredients-stack">
+              <button class="ingredient-container">
+                <div class="ingredient-photo-container">
+                  <img src="Assets/white_peach_puree.jpg" alt="" />
+                </div>
+                <div class="ingredient-name-container">
+                  <p>WHITE PEACH PUREE</p>
+                </div>
+              </button>
             </div>
+          </div>
+          <div class="card-button-container">
+            <button class="accent-button">RESET</button>
+          </div>
         </div>
-        <div class="card">
-            <div class="card-title">
-                <h1>WHAT YOU CAN MAKE</h1>
-            </div>
-            <div class="card-content">
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-            </div>
+        <div class="cocktail-card">
+          <div class="card-title">
+            <h1>WHAT YOU CAN MAKE</h1>
+          </div>
+          <div class="cocktail-card-content"></div>
         </div>
         <div class="smaller-card">
-            <div class="card-title">
-                <h1>WHAT YOU'VE HAD</h1>
-            </div>
-            <div class="card-content">
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-                PLACEHOLDER
-            </div>
+          <div class="card-title">
+            <h1>WHAT YOU'VE HAD</h1>
+          </div>
+          <div class="card-content">
+            PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER
+            PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER
+            PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER PLACEHOLDER
+            PLACEHOLDER PLACEHOLDER PLACEHOLDER
+          </div>
+          <div class="card-button-container">
+            <button class="accent-button">RESET</button>
+          </div>
         </div>
       </div>
       <h1>Get Data from Flask API</h1>
       <button id="fetchData">Fetch Data</button>
       <p id="result"></p>
+      <div class="footer">
+        <p>
+          &copy; <span id="year"></span> COCKTAIL EXPERT. All rights reserved.
+        </p>
+      </div>
     </div>
   </body>
 </html>
