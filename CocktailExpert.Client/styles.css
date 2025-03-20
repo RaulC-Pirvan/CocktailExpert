@@ -106,6 +106,7 @@ body {
 
 .card-content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: start;
@@ -148,7 +149,7 @@ body {
 }
 
 .accent-button:hover {
-  background-color: var(--accent-colour);
+  background-color: var(--primary-colour);
   color: var(--accent-colour);
   padding: 20px 60px;
   border: 2px solid var(--accent-colour);
@@ -172,7 +173,7 @@ body {
   background-color: var(--primary-colour);
   display: flex;
   border: 1px solid transparent;
-  width: 100%;
+  width: 40%;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
@@ -192,14 +193,28 @@ body {
 }
 
 .ingredients-stack {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  gap: 10px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    gap: 10px;
 }
+
+
+.alcohool-stack {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    gap: 10px;
+  }
+  
 
 .ingredient-card {
   display: flex;
@@ -227,4 +242,23 @@ body {
   margin: 100px 20px;
   padding: 50px;
   border-radius: 7px;
+}
+
+.container-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.container-title {
+    width: 100%;
+    padding: 20px 0;
+}
+
+hr {
+    width: 100%;
 }
