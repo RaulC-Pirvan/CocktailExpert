@@ -1,0 +1,62 @@
+BELLINI	Prosecco				White_Peach_Puree					
+BLACK_RUSSIAN	Vodka				Coffee_Liquor					
+BLOODY_MARY	Vodka				Tomato_Juice	Fresh_Lemon_Juice 	Worcestershire_Sauce	Tabasco Celery_Salt Pepper		
+CAIPIRINHA	Cachaça				Lime	White_Sugar				
+CHAMPAGNE_COCKTAIL	Chilled_Champagne	Angostura_bitters	Cognac		Sugar					
+COSMOPOLITAN	Vodka_Citron				Cointreau	Fresh_Lime_Juice	 Cranberry_Juice			
+CORPSE_REVIVER 	Gin	Cointreau	Lillet_Blanc	Absinthe	Fresh_Lemon_Juice					
+CUBRA_LIBRE	White_Rum				Cola	Fresh_Lime_Juice				
+FRENCH_75	Gin	Champagne			Fresh_Lemon_Juice	Sugar_Syrup				
+FRENCH_CONNECTION	Cognac	Amaretto								
+GOLDEN_DREAM 	Galliano	Triple_Sec			Fresh_Orange_Juice	Fresh_Cream				
+GRASSHOPPER	Crème_de_Cacao	Crème_de_Menthe	Fresh_Cream							
+IRISH_COFFEE 	Irish_Whiskey				Hot_coffee	Fresh_cream	Sugar			
+KIR	Dry_White _Wine	Crème_de_Cassis								
+LONG_ISLAND_ICED_TEA	Vodka, Cointreau	Tequila	White rum	Gin	Lemon_juice	Simple_syrup	Cola			
+MAI-TAI	Amber_Jamaican_Rum	Martinique_Molasses_Rum			Orange_Curacao	Orgeat_Syrup	Fresh_Lime_Juice	 Simple_Syrup		
+MARGARITA	Tequila_Agave	 Triple_Sec			Freshly_Squeezed_Lime_Juice					
+MINT_JULEP	Bourbon_Whiskey	Mint_sprigs			Sugar	Water				
+MOJITO	White_Cuban_Rum				Fresh_Lime_Juice	Mint_Sprigs	Sugar	Water		
+MOSCOW_MULE	Smirnoff_Vodka	Ginger_Beer			Fresh_Lime_Juice					
+PINA_COLADA	White_Rum				Coconut_Cream	Fresh_Pineapple_Juice				
+PISCO_SOUR	Pisco				Fresh_Lemon_Juice	Simple_Syrup	Raw_Egg_White			
+SEA_BREEZE	Vodka				Cranberry_Juice	Grapefruit_Juice				
+SEX_ON_THE_BEACH	Vodka				Peach_Schnapps	Fresh_Orange_Juice	Cranberry_Juice			
+SINGAPORE_SLING	Gin	Cherry_liqueur	Cointreau	DOM_BénédicUne	Fresh_Pineapple_Juice	Fresh_Lime_Juice	Grenadine_Syrup			
+TEQUILA_SUNRISE	Tequila				Fresh_Orange_Juice	Grenadine_Syrup				
+VESPER	Gin	Vodka	Lillet_Blanc							
+ZOMBIE	Jamaican_dark_rum	Gold_PuertoRican_Rum	Demerara_Rum		Fresh_Lime_Juice	Falernum	Donn_Mix	Grenadine_Syrup	Angostura_biaers	
+ALEXANDER	Cognac				Crème_de_Cacao	Fresh_Cream				
+AMERICANO	Bitter_Campari	Sweet_Red_Vermouth			Soda_Water					
+ANGEL_FACE	Gin	Apricot_Brandy	Calvados							
+AVIATION	Gin	Maraschino_Liqueur			Fresh_Lemon_Juice	Crème_de_Violette				
+BETWEEN_THE_SHEETS	White_Rum	Cognac	Triple_Sec		Fresh_Lemon_Juice					
+BRANDY_CRUSTA	Brandy	Maraschino_Luxardo			Curacao	Fresh_Lemon_Juice	Simple_Syrup	Aromatic_Biaers		
+CASINO	Old_Tom_Gin	Maraschino_Liqueur			Fresh_Lemon_Juice	Orange_Biaers				
+CLOVER_CLUB	Gin				Raspberry_Syrup	Fresh_Lemon_Juice	Egg_White			
+DAIQUIRI	White_Cuban_Ron				Fresh_Lime_Juice	Superfine_Sugar				
+DRY_MARTINI	Gin	Dry_Vermouth								
+GIN_FIZZ	Gin				Fresh_Lemon_Juice	Simple_Syrup	Soda_Water			
+JOHN_COLLINS	Gin				Fresh_Lemon_Juice	Simple_Syrup	Soda_Water			
+LAST_WORD	Gin	Green_Chartreuse	Maraschino_Liqueur		Fresh_Lime_Juice					
+MANHATTAN	Rye_Whiskey	Sweet_Red_Vermouth	Angostura_Biaers							
+MARTINEZ	London_Dry_Gin	Sweet_Red_Vermouth	Maraschino_Liqueur	Orange_Bitters						
+MARY_PICKFORD	White_Rum	Maraschino_Liqueur			Fresh_Pineapple_Juice	Grenadine_Syrup				
+MONKEY_GLAND	Dry_Gin	Absinthe			Fresh_Orange_Juice	Grenadine_Syrup				
+NEGRONI	Gin	Bitter_Campari	Sweet_Red_Vermouth							
+OLD_FASHIONED	Bourbon	Angostura_Biaers			Sugar	Plain_Water				
+PARADISE	Gin	Apricot_Brandy			Fresh_Orange_Juice					
+PLANTERS_PUNCH	Jamaican_Rum				Fresh_Lime_Juice	Sugar Cane Juice				
+RUSTY_NAIL	Scotch_Whisky	Drambuie								
+SAZERAC	Cognac	Absinthe			Sugar	Dashes_Peychaud_Biaers				
+SIDECAR	Cognac	Triple Sec			Fresh_Lemon_Juice					
+STINGER	Cognac				White_Crème_de_Menthe					
+TUXEDO	Old_Tom_Gin	Dry_Vermouth	Maraschino_Liqueur	Absinthe	Orange_Biaers					
+VIEUX_CARRÉ	Rye_Whiskey	Cognac	Sweet_Vermouth	DOM_BénédicUne	Peychaud_Biaers					
+WHISKEY_SOUR	Bourbon_Whiskey				Fresh_Lemon_Juice	Sugar_Syrup	Egg_White			
+WHITE_LADY	Gin	Triple_Sec			Fresh_Lemon_Juice					
+BARRACUDA	Gold_Rum	Galliano	Prosecco		Pineapple_Juice	Fresh_Lime_Juice				
+BRAMBLE	Gin	Crème_de_Mûre			Fresh_Lemon_Juice	Sugar Syrup				
+BEE’S_KNEES	Dry_Gin				Honey_Syrup	Fresh_Lemon_Juice	Fresh_Orange_Juice			
+CACHANCHARA	Cuban_Aguardiente				Fresh_Lime_Juice	Raw_Honey	Water			
+DARK_‘N’_STORMY	Goslings_Rum	Ginger_Beer								
