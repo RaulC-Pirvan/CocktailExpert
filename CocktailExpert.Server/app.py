@@ -8,37 +8,46 @@ CORS(app)
 api = Api(app, version='1.0', title='Cocktail Expert', description='A simple Flask API with Swagger support')
 ns = api.namespace('data', description='Data operations')
 
-data_model = api.model('Data Model', {
-    'message': fields.String(required=True, description='Message to store')
-})
-
-data_store = {
-    "message": "Hello, World!"
+ingredients_store = {
+    "vodka": "disabled",
+    "gin": "disabled",
+    "rum": "disabled",
+    "sugar": "disabled"
 }
 
-# GET Request
-@ns.route('/get')
+ingredient_model = api.model(
+    "IngredientModel",
+    {
+        "ingredients": fields.List(fields.String, required=True, description="List of ingredient states"),
+    },
+)
+
+# GET request: Return current ingredient states
+@ns.route("/get")
 class GetData(Resource):
     def get(self):
-        return data_store, 200
+        ingredient_list = [f"{state} {name}" for name, state in ingredients_store.items()]
+        return {"ingredients": ingredient_list}, 200
 
-
-# POST Request
-@ns.route('/post')
-class PostData(Resource):
-    @api.expect(data_model)
+# POST request: Update ingredient states
+@ns.route("/update")
+class UpdateData(Resource):
+    @api.expect(ingredient_model)
     def post(self):
         data = request.get_json()
 
-        if not data or 'message' not in data:
-            return {
-                "error": "No message provided"
-            }, 400
+        if not data or "ingredients" not in data:
+            return {"error": "No ingredients provided"}, 400
 
-        data_store["message"] = data["message"]
-        return {
-            "message": "Data received successfully"
-        }, 201
+        for item in data["ingredients"]:
+            parts = item.split(" ", 1)  # Split into "enabled"/"disabled" and ingredient name
+            if len(parts) == 2:
+                state, ingredient = parts
+                ingredient = ingredient.lower()
+                if ingredient in ingredients_store:
+                    ingredients_store[ingredient] = state  # Update ingredient state
+
+        return {"message": "Ingredients updated successfully"}, 200
 
 api.add_namespace(ns)
 

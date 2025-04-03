@@ -1,64 +1,67 @@
-function fetchData() {
-  fetch("http://127.0.0.1:5000/data/get")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok.");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      document.getElementById(
-        "result"
-      ).textContent = `Message: ${data.message}`;
-    })
-    .catch((error) => {
-      console.error("There was a problem with the fetch operation: ", error);
-      document.getElementById("result").textContent = "Failed to fetch data.";
-    });
-}
-
-document.getElementById("fetchData").addEventListener("click", fetchData);
-
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("year").textContent = new Date().getFullYear();
-  console.log("Current year: " + new Date().getFullYear());
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const ingredientButtons = document.querySelectorAll(".ingredient-container");
-  const cocktailsSection = document.querySelector(".cocktail-card-content")
+  const cocktailsSection = document.querySelector(".cocktail-card-content");
   const resetButton = document.querySelector(".accent-button");
 
-  ingredientButtons.forEach((button) => {
-    button.addEventListener("click", function () {
+  // Fetch current ingredient states from the backend
+  function fetchIngredients() {
+    fetch("http://127.0.0.1:5000/data/get")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ingredients) {
+          updateUI(data.ingredients);
+        }
+      })
+      .catch((error) => console.error("Error fetching ingredients:", error));
+  }
+
+  // Update the UI based on fetched ingredient states
+  function updateUI(ingredientList) {
+    ingredientButtons.forEach((button) => {
       const ingredientName = button.querySelector("p").textContent;
+      const state = ingredientList.find((item) => item.includes(ingredientName));
 
-      const existingIngredient = cocktailsSection.querySelector(
-        `[data-ingredient="${ingredientName}"]`
-      );
-
-      if (existingIngredient) {
-        cocktailsSection.removeChild(existingIngredient);
-        button.classList.remove("selected");
-      } else {
-        const selectedIngredient = button.cloneNode(true);
-
-        selectedIngredient.setAttribute("data-ingredient", ingredientName);
-        selectedIngredient.classList.add("selected");
-
-        cocktailsSection.appendChild(selectedIngredient);
-
+      if (state && state.startsWith("enabled")) {
         button.classList.add("selected");
+      } else {
+        button.classList.remove("selected");
       }
     });
-  });
+  }
 
-  resetButton.addEventListener("click", function () {
-    cocktailsSection.innerHTML = "";
+  // Send updated ingredient states to the backend
+  function updateIngredients() {
+    const selectedIngredients = Array.from(ingredientButtons).map((button) => {
+      const ingredientName = button.querySelector("p").textContent;
+      return button.classList.contains("selected")
+        ? `enabled ${ingredientName}`
+        : `disabled ${ingredientName}`;
+    });
 
-    ingredientButtons.forEach((button) => {
-      button.classList.remove("selected");
+    fetch("http://127.0.0.1:5000/data/update", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ingredients: selectedIngredients }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("Updated successfully:", data))
+      .catch((error) => console.error("Error updating ingredients:", error));
+  }
+
+  // Handle ingredient selection toggling
+  ingredientButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      button.classList.toggle("selected");
+      updateIngredients();
     });
   });
+
+  // Reset button functionality
+  resetButton.addEventListener("click", function () {
+    ingredientButtons.forEach((button) => button.classList.remove("selected"));
+    updateIngredients();
+  });
+
+  // Initial fetch on page load
+  fetchIngredients();
 });
