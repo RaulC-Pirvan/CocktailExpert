@@ -12,7 +12,10 @@ ingredients_store = {
     "vodka": "disabled",
     "gin": "disabled",
     "rum": "disabled",
-    "sugar": "disabled"
+    "sugar": "disabled",
+    "prosecco": "disabled",
+    "white peach puree": "disabled",
+
 }
 
 ingredient_model = api.model(
