@@ -12,7 +12,7 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
-# AWS User-specific
+# AWS User-specific 
 .idea/**/aws.xml
 
 # Generated files
@@ -26,6 +26,9 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+
+**/__pycache__/
+
 
 # Gradle
 .idea/**/gradle.xml
