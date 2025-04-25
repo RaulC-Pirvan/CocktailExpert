@@ -126,23 +126,23 @@
 	(assert (cerere-bautura))
 )
 
-(defrule R-introducere-bautura
-	(declare(salience 99))
-	?x <- (cerere-bautura)
-;	?f <- (bauturi-ramase ?n&:(> ?n 0))
-	=>
-	(printout t "Introduceti bautura: " crlf)
-	(bind ?b (read))	
-	(assert (bautura ?b))
-	(retract ?x)
-	(printout t "Mai introduceti o bautura? (D/N): ")
-	(bind ?r (read))
-	(if (or (eq ?r D) (eq ?r d)) then
-		(assert (cerere-bautura))
-	)
-;	(retract ?f)
-;	(assert (bauturi-ramase (- ?n 1)))
-)
+; (defrule R-introducere-bautura
+	; (declare(salience 99))
+	; ?x <- (cerere-bautura)
+; ;	?f <- (bauturi-ramase ?n&:(> ?n 0))
+	; =>
+	; (printout t "Introduceti bautura: " crlf)
+	; (bind ?b (read))	
+	; (assert (bautura ?b))
+	; (retract ?x)
+	; (printout t "Mai introduceti o bautura? (D/N): ")
+	; (bind ?r (read))
+	; (if (or (eq ?r D) (eq ?r d)) then
+		; (assert (cerere-bautura))
+	; )
+; ;	(retract ?f)
+; ;	(assert (bauturi-ramase (- ?n 1)))
+; )
 
 (defrule R-cauta-dupa-1-bautura
 	(declare(salience 98))
@@ -210,16 +210,16 @@
 
 ; *******************************Reguli pentru ingredient **************************
 
-(defrule R-introducere-ingredient
-	(declare(salience 99))
-;	?f <- (ingrediente-ramase ?n&:(> ?n 0))
-	=>
-	(printout t "Introduceti ingredientul: " crlf)
-	(bind ?ingredient (readline))	
-	(str-assert (str-cat "(ingredient " ?ingredient ")"))
-;	(retract ?f)
-;	(assert (ingrediente-ramase (- ?n 1)))
-)
+; (defrule R-introducere-ingredient
+	; (declare(salience 99))
+; ;	?f <- (ingrediente-ramase ?n&:(> ?n 0))
+	; =>
+	; (printout t "Introduceti ingredientul: " crlf)
+	; (bind ?ingredient (readline))	
+	; (str-assert (str-cat "(ingredient " ?ingredient ")"))
+; ;	(retract ?f)
+; ;	(assert (ingrediente-ramase (- ?n 1)))
+; )
 
 (defrule R-cauta-dupa-1-ingredient
 	(declare(salience 79))
@@ -339,51 +339,51 @@
 	(printout t "Combinatia cocktailuri [" ?c1 ", " ?c2 "] => " ?z crlf)
 )
 =======
-(defglobal
-		?*fdate* = nil
-		?*f1bautura* = nil
-)
+; (defglobal
+		; ?*fdate* = nil
+		; ?*f1bautura* = nil
+; )
 
-(defrule R1-deschidere-date
-	(declare(salience 999))
-	=>
-	(if (open "cocktail.dat" ?*fdate* "r") then
-		(assert (faza citire1))
-	else
-		(printout t "Eroare la deschidere cocktail.dat!" crlf)
-	)
-)
+; (defrule R1-deschidere-date
+	; (declare(salience 999))
+	; =>
+	; (if (open "cocktail.dat" ?*fdate* "r") then
+		; (assert (faza citire1))
+	; else
+		; (printout t "Eroare la deschidere cocktail.dat!" crlf)
+	; )
+; )
 
-(defrule R2-citire-date
-	(declare(salience 998))
-	?a <- (faza citire1)
-	=>
-	(retract ?a)
-	(bind ?val (readline ?*fdate*))
-	(if (or (eq ?val FALSE) (eq ?val "")) then
-		(close ?*fdate*)
-		(assert (faza citire2))
-	else
-		(bind ?words (explode$ ?val))
-		(if (> (length$ ?words) 0) then
-			(assert (cocktail ?words))
-		)
-		(assert (faza citire1))
-	)
-)
+; (defrule R2-citire-date
+	; (declare(salience 998))
+	; ?a <- (faza citire1)
+	; =>
+	; (retract ?a)
+	; (bind ?val (readline ?*fdate*))
+	; (if (or (eq ?val FALSE) (eq ?val "")) then
+		; (close ?*fdate*)
+		; (assert (faza citire2))
+	; else
+		; (bind ?words (explode$ ?val))
+		; (if (> (length$ ?words) 0) then
+			; (assert (cocktail ?words))
+		; )
+		; (assert (faza citire1))
+	; )
+; )
 
 
-(defrule R3-dechidere-1-bautura
-	(declare(salience 997))
-	?f <- (faza citire2)
-	=>
-	(retract ?f)
-	(if (open "bautura1.dat" ?*f1bautura* "w") then
-		(assert (faza final))
-	else
-		(printout t "Eroare la deschidere bautura1.dat!" crlf)
-	)
-)
+; (defrule R3-dechidere-1-bautura
+	; (declare(salience 997))
+	; ?f <- (faza citire2)
+	; =>
+	; (retract ?f)
+	; (if (open "bautura1.dat" ?*f1bautura* "w") then
+		; (assert (faza final))
+	; else
+		; (printout t "Eroare la deschidere bautura1.dat!" crlf)
+	; )
+; )
 
 
 (defrule R-final
@@ -399,16 +399,16 @@
 	(assert (start))
 )
 
-(defrule R-introducere-bautura
-	(declare(salience 99))
-;	?f <- (bauturi-ramase ?n&:(> ?n 0))
-	=>
-	(printout t "Introduceti bautura: " crlf)
-	(bind ?b (read))	
-	(assert (bautura ?b))
-;	(retract ?f)
-;	(assert (bauturi-ramase (- ?n 1)))
-)
+; (defrule R-introducere-bautura
+	; (declare(salience 99))
+; ;	?f <- (bauturi-ramase ?n&:(> ?n 0))
+	; =>
+	; (printout t "Introduceti bautura: " crlf)
+	; (bind ?b (read))	
+	; (assert (bautura ?b))
+; ;	(retract ?f)
+; ;	(assert (bauturi-ramase (- ?n 1)))
+; )
 
 (defrule R-cauta-dupa-1-bautura
 	(declare(salience 98))
@@ -418,7 +418,7 @@
 	=>
 	(assert(cocktail-afisat-b1 ?z))
 	(printout t "R-cauta-dupa-1-bautura cu " ?b1 ": " ?z crlf)
-	(printout ?*f1bautura* "[FILE] " ?z crlf)
+	;(printout ?*f1bautura* "[FILE] " ?z crlf)
 )
 
 (defrule R-cauta-dupa-2-bauturi
@@ -463,16 +463,16 @@
 ;	(str-assert (str-cat "(ingrediente-ramase " ?val ")"))
 ;)
 
-(defrule R-introducere-ingredient
-	(declare(salience 99))
-;	?f <- (ingrediente-ramase ?n&:(> ?n 0))
-	=>
-	(printout t "Introduceti ingredientul: " crlf)
-	(bind ?ingredient (readline))	
-	(str-assert (str-cat "(ingredient " ?ingredient ")"))
-;	(retract ?f)
-;	(assert (ingrediente-ramase (- ?n 1)))
-)
+; (defrule R-introducere-ingredient
+	; (declare(salience 99))
+	; ?f <- (ingrediente-ramase ?n&:(> ?n 0))
+	; =>
+	; (printout t "Introduceti ingredientul: " crlf)
+	; (bind ?ingredient (readline))	
+	; (str-assert (str-cat "(ingredient " ?ingredient ")"))
+	; (retract ?f)
+	; (assert (ingrediente-ramase (- ?n 1)))
+; )
 
 (defrule R-cauta-dupa-1-ingredient
 	(declare(salience 79))
@@ -546,12 +546,12 @@
 ;	=>
 ;	(retract ?a)
 ;)
-(defrule R-inchidere-fisier
-	(declare (salience 0))
-	=>
-	(close ?*fdate*)
-	(close ?*f1bautura*)
-)
+; (defrule R-inchidere-fisier
+	; (declare (salience 0))
+	; =>
+	; (close ?*fdate*)
+	; (close ?*f1bautura*)
+; )
 
 ;(defrule R-numar-bauturi
 ;	(declare(salience 100))

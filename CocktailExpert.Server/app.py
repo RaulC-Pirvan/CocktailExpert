@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_restx import Api, Resource, fields
 from flask_cors import CORS
 
+from test4 import *
+
 app = Flask(__name__)
 CORS(app)
 
@@ -15,6 +17,7 @@ ingredients_store = {
     "sugar": "disabled",
     "prosecco": "disabled",
     "white peach puree": "disabled",
+    "champagne": "disabled",
 
 }
 
@@ -42,6 +45,8 @@ class UpdateData(Resource):
         if not data or "ingredients" not in data:
             return {"error": "No ingredients provided"}, 400
 
+        cocktailuri = printeaza(data)
+
         for item in data["ingredients"]:
             parts = item.split(" ", 1)  # Split into "enabled"/"disabled" and ingredient name
             if len(parts) == 2:
@@ -50,7 +55,14 @@ class UpdateData(Resource):
                 if ingredient in ingredients_store:
                     ingredients_store[ingredient] = state  # Update ingredient state
 
-        return {"message": "Ingredients updated successfully"}, 200
+        # Return the first entry with the message "update ok" and the cocktails as separate items
+        response = {"message": "update ok"}  # Add the message entry
+
+        # Add each cocktail as a separate entry in the response
+        for i, cocktail in enumerate(cocktailuri, 1):
+            response[f"cocktail_{i}"] = cocktail
+
+        return response, 200
 
 api.add_namespace(ns)
 
