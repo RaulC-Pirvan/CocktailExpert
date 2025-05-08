@@ -89,7 +89,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: var(--primary-colour);
   width: 20%;
-  margin: 100px 20px;
+  margin: 0 20px;
   height: 800px;
   padding: 50px;
   border-radius: 7px;
@@ -225,7 +225,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: var(--primary-colour);
   width: 40%;
-  margin: 100px 20px;
+  margin: 0 20px;
   padding: 50px;
   border-radius: 7px;
 }
@@ -239,7 +239,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: var(--primary-colour);
   width: 40%;
-  margin: 100px 20px;
+  margin: 0 20px;
   padding: 50px;
   border-radius: 7px;
 }
@@ -261,4 +261,24 @@ body {
 
 hr {
     width: 100%;
+}
+
+.cocktail-entry
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent-colour);
+  color: var(--text-colour);
+  border-radius: 8px;
+  font-size: 32px;
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.cocktail-entry:hover {
+  background-color: #ffcc74;
+  color: var(--primary-colour);
 }

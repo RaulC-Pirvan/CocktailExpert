@@ -147,9 +147,10 @@
 (defrule R-cauta-dupa-1-bautura
 	(declare(salience 98))
 	(bautura ?b1)
-	(cocktail ?z $? ?b1 $?)
+	?c <- (cocktail ?z $? ?b1 $?)
 	(not (cocktail-afisat-b1 ?z))
 	=>
+	(retract ?c)
 	(assert(cocktail-afisat-b1 ?z))
 	(printout t "R-cauta-dupa-1-bautura cu [" ?b1 "] => " ?z crlf)
 	;(printout ?*f1bautura* ?z crlf)

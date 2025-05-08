@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.ingredients) {
           updateUI(data.ingredients);
         }
+        fetchCocktails(); // Fetch cocktails on load too
       })
       .catch((error) => console.error("Error fetching ingredients:", error));
   }
@@ -44,8 +45,34 @@ document.addEventListener("DOMContentLoaded", function () {
       body: JSON.stringify({ ingredients: selectedIngredients }),
     })
       .then((response) => response.json())
-      .then((data) => console.log("Updated successfully:", data))
+      .then((data) => {
+        console.log("Updated successfully:", data);
+        fetchCocktails(); // Refresh cocktails after update
+      })
       .catch((error) => console.error("Error updating ingredients:", error));
+  }
+
+  // Fetch available cocktails from the backend
+  function fetchCocktails() {
+    fetch("http://127.0.0.1:5000/data/cocktails")
+      .then((response) => response.json())
+      .then((data) => {
+        cocktailsSection.innerHTML = "";
+
+        if (!data.available_cocktails || data.available_cocktails.length === 0) {
+          return;
+        }
+
+        data.available_cocktails.forEach((cocktail) => {
+          const div = document.createElement("div");
+          div.className = "cocktail-entry";
+          div.textContent = cocktail;
+          cocktailsSection.appendChild(div);
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching cocktails:", error);
+      });
   }
 
   // Handle ingredient selection toggling

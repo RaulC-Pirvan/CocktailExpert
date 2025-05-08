@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_restx import Api, Resource, fields
 from flask_cors import CORS
 
-from test4 import *
+import test4
 
 app = Flask(__name__)
 CORS(app)
@@ -18,15 +18,16 @@ ingredients_store = {
     "prosecco": "disabled",
     "white peach puree": "disabled",
     "champagne": "disabled",
-
 }
 
-ingredient_model = api.model(
+ingredient_model = api.model(   
     "IngredientModel",
     {
         "ingredients": fields.List(fields.String, required=True, description="List of ingredient states"),
     },
 )
+
+cocktail_store = {}
 
 # GET request: Return current ingredient states
 @ns.route("/get")
@@ -35,7 +36,14 @@ class GetData(Resource):
         ingredient_list = [f"{state} {name}" for name, state in ingredients_store.items()]
         return {"ingredients": ingredient_list}, 200
 
-# POST request: Update ingredient states
+# GET request: Return available cocktails
+@ns.route("/cocktails")
+class GetCocktails(Resource):
+    def get(self):
+        enabled_cocktails = [name for name, state in cocktail_store.items() if state == "enabled"]
+        return {"available_cocktails": enabled_cocktails}, 200
+
+# POST request: Update ingredient states and cocktail availability
 @ns.route("/update")
 class UpdateData(Resource):
     @api.expect(ingredient_model)
@@ -45,20 +53,27 @@ class UpdateData(Resource):
         if not data or "ingredients" not in data:
             return {"error": "No ingredients provided"}, 400
 
-        cocktailuri = printeaza(data)
+        cocktailuri = test4.printeaza(data)
 
+        # Update ingredient states
         for item in data["ingredients"]:
             parts = item.split(" ", 1)  # Split into "enabled"/"disabled" and ingredient name
             if len(parts) == 2:
                 state, ingredient = parts
                 ingredient = ingredient.lower()
                 if ingredient in ingredients_store:
-                    ingredients_store[ingredient] = state  # Update ingredient state
+                    ingredients_store[ingredient] = state
 
-        # Return the first entry with the message "update ok" and the cocktails as separate items
-        response = {"message": "update ok"}  # Add the message entry
+        # Reset all cocktails to 'disabled'
+        for key in cocktail_store:
+            cocktail_store[key] = "disabled"
 
-        # Add each cocktail as a separate entry in the response
+        # Enable new cocktails
+        for cocktail in cocktailuri:
+            cocktail_store[cocktail] = "enabled"
+
+        # Build response
+        response = {"message": "update ok"}
         for i, cocktail in enumerate(cocktailuri, 1):
             response[f"cocktail_{i}"] = cocktail
 
