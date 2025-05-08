@@ -88,9 +88,9 @@ body {
   align-content: start;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: var(--primary-colour);
-  width: 20%;
-  margin: 0 20px;
-  height: 800px;
+  margin: 0 20px 80px 20px;
+  height: auto;
+  width: 40%;
   padding: 50px;
   border-radius: 7px;
 }
@@ -107,7 +107,7 @@ body {
 .card-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   text-align: center;
   align-items: start;
   height: 100%;
@@ -225,7 +225,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: var(--primary-colour);
   width: 40%;
-  margin: 0 20px;
+  margin: 0 20px 80px 20px;
   padding: 50px;
   border-radius: 7px;
 }
@@ -239,8 +239,9 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: var(--primary-colour);
   width: 40%;
-  margin: 0 20px;
+  margin: 0 20px 80px 20px;
   padding: 50px;
+  height: auto;
   border-radius: 7px;
 }
 
@@ -276,9 +277,19 @@ hr {
   padding: 10px 0;
   margin: 5px 0;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .cocktail-entry:hover {
   background-color: #ffcc74;
   color: var(--primary-colour);
+}
+
+p {
+  font-size: 16px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
 }

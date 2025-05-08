@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const ingredientButtons = document.querySelectorAll(".ingredient-container");
   const cocktailsSection = document.querySelector(".cocktail-card-content");
+  const hadSection = document.querySelector(".smaller-card .card-content");
   const resetButton = document.querySelector(".accent-button");
 
   // Fetch current ingredient states from the backend
@@ -67,6 +68,19 @@ document.addEventListener("DOMContentLoaded", function () {
           const div = document.createElement("div");
           div.className = "cocktail-entry";
           div.textContent = cocktail;
+
+          // Add click event to move cocktail
+          div.addEventListener("click", () => {
+            // Remove from "What You Can Make"
+            div.remove();
+
+            // Add to "What You've Had"
+            const hadDiv = document.createElement("div");
+            hadDiv.className = "cocktail-entry";
+            hadDiv.textContent = cocktail;
+            hadSection.appendChild(hadDiv);
+          });
+
           cocktailsSection.appendChild(div);
         });
       })
@@ -86,6 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Reset button functionality
   resetButton.addEventListener("click", function () {
     ingredientButtons.forEach((button) => button.classList.remove("selected"));
+
+    hadSection.innerHTML = "";
+    
     updateIngredients();
   });
 
