@@ -162,8 +162,8 @@
 (bautura Vodka)
 (bautura Prosecco)
 (bautura Rum)
-?e <- (cocktail-afisat-b1 Nebunie)
-?e2 <- (cocktail-afisat-b2 Nebunie)
+?e <- (cocktail-afisat-b1 VPR)
+?e2 <- (cocktail-afisat-b2 VPR)
 ?e3 <- (cocktail-afisat-b3 VPR)
 =>
 (retract ?e ?e2 ?e3)
