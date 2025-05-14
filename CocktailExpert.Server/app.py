@@ -20,6 +20,8 @@ ingredients_store = {
     "champagne": "disabled",
 }
 
+data= ""
+
 ingredient_model = api.model(   
     "IngredientModel",
     {
@@ -34,6 +36,7 @@ cocktail_store = {}
 class GetData(Resource):
     def get(self):
         ingredient_list = [f"{state} {name}" for name, state in ingredients_store.items()]
+
         return {"ingredients": ingredient_list}, 200
 
 # GET request: Return available cocktails
@@ -48,6 +51,7 @@ class GetCocktails(Resource):
 class UpdateData(Resource):
     @api.expect(ingredient_model)
     def post(self):
+        global data
         data = request.get_json()
 
         if not data or "ingredients" not in data:
@@ -73,11 +77,40 @@ class UpdateData(Resource):
             cocktail_store[cocktail] = "enabled"
 
         # Build response
-        response = {"message": "update ok"}
+        response = {"message": "update ok",
+                    "ingredients": [f"{state} {name}" for name, state in ingredients_store.items()]
+                    }
         for i, cocktail in enumerate(cocktailuri, 1):
             response[f"cocktail_{i}"] = cocktail
 
         return response, 200
+
+    def get(self):
+        cocktail = request.args.get("cocktail")
+
+        if cocktail:
+            #print(cocktail)
+            #print(data)
+            cocktailuri, bauturi = test4.preparaCocktail(data, cocktail)
+
+            print("M-am apelat cu succesuri")
+            print(bauturi)
+            print(cocktailuri)
+
+            # Normalize bauturi list to lowercase
+            bauturi_lower = [b.lower() for b in bauturi]
+
+            # Update the state of each ingredient
+            for name in ingredients_store.keys():
+                if name.lower() in bauturi_lower:
+                    ingredients_store[name] = "enabled"
+                else:
+                    ingredients_store[name] = "disabled"
+
+        # If no parameter is provided, return all
+        return {
+            "ingredients": [f"{state} {name}" for name, state in ingredients_store.items()]
+        }, 200
 
 api.add_namespace(ns)
 
