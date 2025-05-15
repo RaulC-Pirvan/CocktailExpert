@@ -19,7 +19,7 @@ ingredients_store = {
     "prosecco": "disabled",
     "white_peach_puree": "disabled",
     "champagne": "disabled",
-    "cointreal": "disabled",
+    "cointreau": "disabled",
     "lillet_blanc": "disabled",
     "absinthe": "disabled",
     "coffee_liqueur": "disabled",
