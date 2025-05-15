@@ -38,6 +38,7 @@
 (deffacts Proiect-SBC
 	(cocktail Nebunie Gin Vodka)
 	(cocktail VPR Vodka Prosecco Rum)
+	(cocktail Bla Champagne Sugar)
 	(cocktail AngelFace Gin Aprico Brandy Calvados)
 	(cocktail Americano Bitter Campari Sweet Red Vermouth Sod Water)
 	(cocktail Alexander Cognac Creme De Cacao Fresh Cream)
@@ -158,6 +159,17 @@
 (printout t "Nebunie este complet" crlf)
 )
 
+(defrule c_Bla
+(bautura Champagne)
+(bautura Sugar)
+;?e <- (cocktail-afisat-b1 Nebunie)
+;?e2 <- (cocktail-afisat-b2 Nebunie)
+=>
+;(retract ?e ?e2)
+(assert (c_complet Bla))
+(printout t "Bla este complet" crlf)
+)
+
 (defrule c_VPR
 (bautura Vodka)
 (bautura Prosecco)
@@ -172,6 +184,7 @@
 )
 
 
+
 (defrule p_Nebunie
 (declare (salience 50))
 ;(c_complet Nebunie)
@@ -183,6 +196,18 @@
 (retract ?c ?p ?g ?v)
 (assert (drank Nebunie))
 (printout t "am baut nebunie" crlf))
+
+(defrule p_Bla
+(declare (salience 50))
+;(c_complet Nebunie)
+?p <- (prepara Bla)
+?g <- (bautura Champagne)
+?v <- (bautura Sugar)
+?c <- (cocktail Bla Champagne Sugar)
+=>
+(retract ?c ?p ?g ?v)
+(assert (drank Bla))
+(printout t "am baut bla" crlf))
 
 (defrule p_VPR
 (declare (salience 50))
