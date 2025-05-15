@@ -19,6 +19,21 @@ ingredients_store = {
     "prosecco": "disabled",
     "white peach puree": "disabled",
     "champagne": "disabled",
+    "cointreal": "disabled",
+    "lillet blanc": "disabled",
+    "absinthe": "disabled",
+    "coffee liqueur": "disabled",
+    "tomato juice": "disabled",
+    "lemon juice": "disabled",
+    "worcestershire sauce": "disabled",
+    "cachaca": "disabled",
+    "grand marnier": "disabled",
+    "angostura bitters": "disabled",
+    "lime": "disabled",
+    "cranberry juice": "disabled",
+    "sparkling water": "disabled",
+    "coke": "disabled",
+
 }
 
 data= ""
