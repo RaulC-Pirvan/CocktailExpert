@@ -90,7 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((data) => {
               console.log("GET request response:", data.ingredients);
               if (data.ingredients) {
+
                 updateUI(data.ingredients); // Aplică selecția actualizată venită din backend
+                updateIngredients();
+                //as vrea sa fac un nou request post pe baza data.ingredients
               }
               //now update the UI again to make sure that what you have is updated based on the response
             })

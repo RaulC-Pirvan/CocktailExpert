@@ -1,3 +1,4 @@
+from PIL.ImageOps import contain
 from flask import Flask, request
 from flask_restx import Api, Resource, fields
 from flask_cors import CORS
@@ -91,6 +92,7 @@ class UpdateData(Resource):
         if cocktail:
             #print(cocktail)
             #print(data)
+            global data
             cocktailuri, bauturi = test4.preparaCocktail(data, cocktail)
 
             print("M-am apelat cu succesuri")
@@ -104,8 +106,23 @@ class UpdateData(Resource):
             for name in ingredients_store.keys():
                 if name.lower() in bauturi_lower:
                     ingredients_store[name] = "enabled"
+                    for idx,i in enumerate (data['ingredients']):
+                        if name.lower() in i.lower():
+                            print("aici")
+                            data['ingredients'][idx]=i.replace("disabled", "enabled")
+                            print(i)
                 else:
                     ingredients_store[name] = "disabled"
+                    for idx, i in enumerate(data['ingredients']):
+                        if name.lower() in i.lower():
+                            print("aici")
+                            data['ingredients'][idx] = i.replace( "enabled", "disabled")
+                            print(i)
+
+            # force a post using data here
+            print(data)
+            print("bla bla bla")
+            print(bauturi)
 
         # If no parameter is provided, return all
         return {
