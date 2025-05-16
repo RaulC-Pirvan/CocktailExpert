@@ -1,4 +1,4 @@
-from PIL.ImageOps import contain
+#from PIL.ImageOps import contain
 from flask import Flask, request
 from flask_restx import Api, Resource, fields
 from flask_cors import CORS
