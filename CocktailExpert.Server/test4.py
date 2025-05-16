@@ -1,54 +1,54 @@
-import clips  # Importarea bibliotecii CLIPS pentru integrarea cu un sistem expert
+import clips  # Importă biblioteca CLIPS pentru integrarea cu un sistem expert bazat pe reguli
 
 def insereazaClips(env, s):
     """
-    Inserează în mediul CLIPS fapte de tipul (bautura <ingredient>) pentru fiecare element din stivă.
+    Inserează în mediul CLIPS fapte de tipul (bautura <ingredient>) pentru fiecare ingredient din listă.
 
     Args:
-        env (clips.Environment): Mediul CLIPS în care se inserează faptele.
-        s (list): Listă (stivă) cu ingrediente sub formă de stringuri.
+        env (clips.Environment): Mediul CLIPS în care se vor introduce faptele.
+        s (list): Listă (stivă) de ingrediente sub formă de stringuri (nume ingrediente).
 
     Returns:
-        clips.Environment: Mediul CLIPS actualizat cu faptele introduse.
+        clips.Environment: Mediul CLIPS actualizat cu noile fapte.
     """
     while s:
-        stringLocal = "(bautura " + s.pop() + " )"  # Creează un fapt CLIPS pentru fiecare ingredient
-        env.assert_string(stringLocal)  # Inserează faptul în baza de fapte CLIPS
+        ingredient = s.pop()
+        fapt = f"(bautura {ingredient})"  # Creează un fapt CLIPS pentru ingredient
+        env.assert_string(fapt)  # Adaugă faptul în baza de cunoștințe CLIPS
     return env
 
 def insereazaClips2(env, s):
     """
-    Inserează în mediul CLIPS fapte de tipul (bautura <ingredient>) pentru fiecare element din stivă.
+    Inserează în mediul CLIPS fapte sub formă de stringuri complete (deja formate).
 
     Args:
-        env (clips.Environment): Mediul CLIPS în care se inserează faptele.
-        s (list): Listă (stivă) cu ingrediente sub formă de stringuri.
+        env (clips.Environment): Mediul CLIPS în care se vor introduce faptele.
+        s (list): Listă de stringuri CLIPS deja formate, ex: "(bautura rom)".
 
     Returns:
-        clips.Environment: Mediul CLIPS actualizat cu faptele introduse.
+        clips.Environment: Mediul CLIPS actualizat cu noile fapte.
     """
     while s:
-        stringuletRaul=s.pop()
-        print(stringuletRaul)
-        env.assert_string(stringuletRaul)  # Inserează faptul în baza de fapte CLIPS
+        fapt = s.pop()
+        print(fapt)  # Afișează faptul pentru debugging
+        env.assert_string(fapt)
     return env
 
 def printeaza(dataJson):
     """
-    Procesează un obiect JSON cu ingrediente, le introduce în CLIPS și extrage rezultatul inferenței.
+    Primește un obiect JSON cu ingrediente și returnează o listă de cocktailuri recomandate.
 
     Args:
-        dataJson (dict): Obiect JSON care conține o listă de ingrediente sub cheia "ingredients".
-                         Fiecare ingredient este un string de forma "enabled NumeIngredient".
+        dataJson (dict): Obiect JSON cu cheia "ingredients", ce conține o listă de stringuri 
+                         de forma "enabled NumeIngredient" sau "disabled NumeIngredient".
 
     Returns:
-        list: Listă de cocktailuri sugerate de sistemul expert pe baza ingredientelor selectate.
+        list: Numele cocktailurilor recomandate pe baza ingredientelor selectate.
     """
-    stiva = []  # Inițializează lista (stiva) pentru ingrediente selectate
+    stiva = []  # Inițializează o stivă pentru ingredientele selectate
 
-    # Parcurge ingredientele și extrage cele marcate ca "enabled"
     for item in dataJson["ingredients"]:
-        parts = item.split(" ", 1)  # Împarte în stare și numele ingredientului
+        parts = item.split(" ", 1)
         if len(parts) == 2:
             state, ingredient = parts
             ingredient = ingredient[0] + ingredient[1:].lower()  # Normalizează numele
@@ -56,83 +56,100 @@ def printeaza(dataJson):
                 print(ingredient, " ", state)
                 stiva.append(ingredient)
 
-    # Inițializare și configurare mediu CLIPS
+    # Configurare mediu CLIPS
     env = clips.Environment()
-    env.clear()  # Golește faptele și regulile existente
-    env.load("clipsRefactor.clp")  # Încarcă fișierul cu regulile sistemului expert
-    env.reset()  # Resetează mediul CLIPS pentru o rulare nouă
+    env.clear()
+    env.load("clipsRefactor.clp")
+    env.reset()
 
-    env = insereazaClips(env, stiva)  # Inserează faptele (ingredientele)
-    env.run()  # Rulează motorul de inferență CLIPS
+    env = insereazaClips(env, stiva)
+    env.run()
 
-    output = printeazaFancy(env)  # Extrage rezultatele
-    return output
-
+    return printeazaFancy(env)
 
 def printeazaFancy(env):
     """
-    Extrage din mediul CLIPS cocktailurile rezultate în urma inferenței.
+    Extrage numele cocktailurilor recomandate din mediul CLIPS după inferență.
 
     Args:
-        env (clips.Environment): Mediul CLIPS după ce a fost rulat.
+        env (clips.Environment): Mediul CLIPS în care s-a efectuat inferența.
 
     Returns:
-        list: Listă de nume de cocktailuri recomandate (stringuri).
+        list: Lista numelor cocktailurilor generate de sistemul expert.
     """
-    cuvinte = []  # Inițializează lista pentru cocktailuri
-    facts = env.eval("(get-fact-list *)")  # Obține lista completă a faptelor din CLIPS
+    rezultate = []
+    facts = env.eval("(get-fact-list *)")
 
     for fact in facts:
-        stringulet = str(fact)
-        stringulet = stringulet.replace("(", "").replace(")", "")  # Elimină parantezele
+        fact_str = str(fact).replace("(", "").replace(")", "")
+        if "cocktailComplet" in fact_str:
+            cocktail = fact_str.split()[1]
+            rezultate.append(cocktail)
 
-        if "cocktailComplet" in stringulet:
-            last_word = stringulet.split()[1]  # Ia ultimul cuvânt (numele cocktailului)
-            cuvinte.append(last_word)
-
-    return cuvinte  # Returnează lista cu cocktailurile generate
+    return rezultate
 
 def preparaCocktail(dataJson, dePreparat):
+    """
+    Pregătește un cocktail specific, folosind ingredientele selectate și returnează atât cocktailul complet,
+    cât și ingredientele utilizate.
 
-    stiva = []  # Inițializează lista (stiva) pentru ingrediente selectate
+    Args:
+        dataJson (dict): Obiect JSON cu cheia "ingredients", ce conține lista de ingrediente și starea lor.
+        dePreparat (str): Numele cocktailului care trebuie preparat.
 
-    # Parcurge ingredientele și extrage cele marcate ca "enabled"
+    Returns:
+        tuple: (lista cocktailurilor preparate, lista ingredientelor utilizate)
+    """
+    stiva = []
+
     for item in dataJson["ingredients"]:
-        parts = item.split(" ", 1)  # Împarte în stare și numele ingredientului
+        parts = item.split(" ", 1)
         if len(parts) == 2:
             state, ingredient = parts
-            ingredient = ingredient[0] + ingredient[1:].lower()  # Normalizează numele
+            ingredient = ingredient[0] + ingredient[1:].lower()
             if state == "enabled":
                 print(ingredient, " ", state)
-                stiva.append("(bautura " + ingredient + ")")
+                stiva.append(f"(bautura {ingredient})")
 
-    # Inițializare și configurare mediu CLIPS
+    # Adaugă și scopul: cocktailul de preparat
+    stiva.append(f"(prepara {dePreparat})")
+
+    # Configurare mediu CLIPS
     env = clips.Environment()
-    env.clear()  # Golește faptele și regulile existente
-    env.load("clipsRefactor.clp")  # Încarcă fișierul cu regulile sistemului expert
-    env.reset()  # Resetează mediul CLIPS pentru o rulare nouă
-    stiva.append("(prepara "+dePreparat+ ")")
-    env = insereazaClips2(env, stiva)  # Inserează faptele (ingredientele)
-    env.run()  # Rulează motorul de inferență CLIPS
+    env.clear()
+    env.load("clipsRefactor.clp")
+    env.reset()
+
+    env = insereazaClips2(env, stiva)
+    env.run()
 
     return printeazaAmbele(env)
 
 def printeazaAmbele(env):
-    complete = []  # Inițializează lista pentru cocktailuri
-    bauturi=[]
-    facts = env.eval("(get-fact-list *)")  # Obține lista completă a faptelor din CLIPS
+    """
+    Extrage atât cocktailurile complet preparate, cât și ingredientele (băuturile) utilizate.
+
+    Args:
+        env (clips.Environment): Mediul CLIPS după rularea inferenței.
+
+    Returns:
+        tuple: (lista cocktailurilor complet preparate, lista ingredientelor utilizate)
+    """
+    complete = []
+    bauturi = []
+
+    facts = env.eval("(get-fact-list *)")
 
     for fact in facts:
-        stringulet = str(fact)
-        stringulet = stringulet.replace("(", "").replace(")", "")  # Elimină parantezele
+        fact_str = str(fact).replace("(", "").replace(")", "")
 
-        if "c_complet" in stringulet:
-            last_word = stringulet.split()[-1]  # Ia ultimul cuvânt (numele cocktailului)
-            complete.append(last_word)
-            print(last_word)
+        if "c_complet" in fact_str:
+            cocktail = fact_str.split()[-1]
+            complete.append(cocktail)
+            print(cocktail)
 
-        if "bautura" in stringulet:
-            last_word = stringulet.split()[-1]  # Ia ultimul cuvânt (numele cocktailului)
-            bauturi.append(last_word)
+        if "bautura" in fact_str:
+            bautura = fact_str.split()[-1]
+            bauturi.append(bautura)
 
-    return complete, bauturi  # Returnează lista cu cocktailurile generate
+    return complete, bauturi
