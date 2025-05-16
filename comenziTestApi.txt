@@ -1,0 +1,5 @@
+de testat daca merge
+curl -X POST http://127.0.0.1:5000/data/update -H "Content-Type: application/json" -d "{\"ingredients\":[\"enabled RUM\",\"enabled COLA\",\"enabled LIME\",\"enabled SUGAR\"]}"
+
+de testat daca plange
+curl -X POST http://127.0.0.1:5000/data/update -H "Content-Type: application/json" -d "{\"ingredients\":[\"enabled VODKA\",\"enabled PROSECCO\",\"enabled RUM\",\"enabled CHAMPAGNE\",\"enabled COINTREAU\",\"enabled GIN\",\"enabled LILLET-BLANC\",\"enabled MARASCHINO\",\"enabled ABSINTHE\",\"enabled RED-VERMOUTH\",\"enabled WHITE-PEACH-PUREE\",\"enabled COFFEE-LIQUEUR\",\"enabled TOMATO-JUICE\",\"enabled LEMON-JUICE\",\"enabled WORCESTERSHIRE-SAUCE\",\"enabled CACHACA\",\"enabled TRIPLESEC\",\"enabled BOURBON\",\"enabled ANGOSTURA-BITTERS\",\"enabled SUGAR\",\"enabled LIME\",\"enabled CRANBERRY-JUICE\",\"enabled WATER\",\"enabled SIMPLE-SYRUP\",\"enabled ORANGE-JUICE\",\"enabled COLA\"]}"
