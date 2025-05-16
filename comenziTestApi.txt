@@ -1,3 +1,13 @@
+dependinte
+pip install clipspy==0.3.3
+pip install iclips
+pip install flask
+pip install flask_restx
+pip install flask_cors
+
+din folderul Server
+python app.py
+
 de testat daca merge
 curl -X POST http://127.0.0.1:5000/data/update -H "Content-Type: application/json" -d "{\"ingredients\":[\"enabled RUM\",\"enabled COLA\",\"enabled LIME\",\"enabled SUGAR\"]}"
 
