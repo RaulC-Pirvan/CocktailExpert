@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the UI based on fetched ingredient states
   function updateUI(ingredientList) {
     ingredientButtons.forEach((button) => {
-      const ingredientName = button.querySelector("p").textContent;
-      const state = ingredientList.find((item) => item.includes(ingredientName));
+      const ingredientName = button.querySelector("p").textContent.toLowerCase();
+      const state = ingredientList.find((item) => item.toLowerCase().includes(ingredientName));
+
 
       if (state && state.startsWith("enabled")) {
         button.classList.add("selected");
@@ -48,6 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         console.log("Updated successfully:", data);
+        if (data.ingredients) {
+          updateUI(data.ingredients); // Aplică selecția actualizată venită din backend
+        }
         fetchCocktails(); // Refresh cocktails after update
       })
       .catch((error) => console.error("Error updating ingredients:", error));
@@ -55,39 +59,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fetch available cocktails from the backend
   function fetchCocktails() {
-    fetch("http://127.0.0.1:5000/data/cocktails")
-      .then((response) => response.json())
-      .then((data) => {
-        cocktailsSection.innerHTML = "";
+  fetch("http://127.0.0.1:5000/data/cocktails")
+    .then((response) => response.json())
+    .then((data) => {
+      cocktailsSection.innerHTML = "";
 
-        if (!data.available_cocktails || data.available_cocktails.length === 0) {
-          return;
-        }
+      if (!data.available_cocktails || data.available_cocktails.length === 0) {
+        return;
+      }
 
-        data.available_cocktails.forEach((cocktail) => {
-          const div = document.createElement("div");
-          div.className = "cocktail-entry";
-          div.textContent = cocktail;
+      data.available_cocktails.forEach((cocktail) => {
+        const div = document.createElement("div");
+        div.className = "cocktail-entry";
+        div.textContent = cocktail;
 
-          // Add click event to move cocktail
-          div.addEventListener("click", () => {
-            // Remove from "What You Can Make"
-            div.remove();
+        // Add click event to move cocktail
+        div.addEventListener("click", () => {
+          // Remove from "What You Can Make"
+          div.remove();
 
-            // Add to "What You've Had"
-            const hadDiv = document.createElement("div");
-            hadDiv.className = "cocktail-entry";
-            hadDiv.textContent = cocktail;
-            hadSection.appendChild(hadDiv);
-          });
+          // Add to "What You've Had"
+          const hadDiv = document.createElement("div");
+          hadDiv.className = "cocktail-entry";
+          hadDiv.textContent = cocktail;
+          hadSection.appendChild(hadDiv);
 
-          cocktailsSection.appendChild(div);
+          // ✅ Send the GET request with the cocktail name as a query parameter
+          fetch(`http://127.0.0.1:5000/data/update?cocktail=${encodeURIComponent(cocktail)}`)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log("GET request response:", data.ingredients);
+              if (data.ingredients) {
+
+                updateUI(data.ingredients); // Aplică selecția actualizată venită din backend
+                updateIngredients();
+                //as vrea sa fac un nou request post pe baza data.ingredients
+              }
+              //now update the UI again to make sure that what you have is updated based on the response
+            })
+            .catch((error) => {
+              console.error("Error sending GET request:", error);
+            });
         });
-      })
-      .catch((error) => {
-        console.error("Error fetching cocktails:", error);
+
+        cocktailsSection.appendChild(div);
       });
-  }
+    })
+    .catch((error) => {
+      console.error("Error fetching cocktails:", error);
+    });
+}
+
 
   // Handle ingredient selection toggling
   ingredientButtons.forEach((button) => {

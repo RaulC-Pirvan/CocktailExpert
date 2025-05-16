@@ -1,0 +1,79 @@
+| Cocktail             | Băuturi (nr.)      | Băuturi Alcoolice                                                            |
+| -------------------- | ------------------ | ---------------------------------------------------------------------------- |
+| **Kir**              | 2                  | DryWhiteWine, CremeDeCassis                                            |
+| **RustyNail**        | 2                  | ScotchWhisky, Drambuie                                                 |
+| **FrenchConnection** | 2                  | Cognac, Amaretto                                                       |
+| **DryMartini**       | 2                  | Gin, DryVermouth                                                       |
+| **DarkNStormy**      | 2                  | GoslingsRum, GingerBeer                                                |
+| **Manhattan**        | 3                  | RyeWhiskey, SweetRedVermouth, AngosturaBiaers                     	  |
+| **Vesper**           | 3                  | Gin, Vodka, LilletBlanc                                            	 |
+| **AngelFace**        | 3                  | Gin, ApricotBrandy, Calvados                                      	  |
+| **Grasshopper**      | 3                  | CremeDeCacao, CremeDeMenthe, FreshCream                            		 |
+| **Martinez**         | 4                  | LondonDryGin, SweetRedVermouth, MaraschinoLiqueur, OrangeBitters 				|
+| **Negroni**          | 3 (notat incorect) | Gin, BitterCampari, SweetRedVermouth							        |
+
+| Cocktail       | Nr. Băuturi | Băuturi          | Nr. Ingrediente | Ingrediente                                                                  |
+| -------------- | ----------- | ---------------- | --------------- | ---------------------------------------------------------------------------- |
+| Alexander      | 1           | Cognac           | 2               | CremeDeCacao, FreshCream                                                     |
+| BeesKnees      | 1           | DryGin           | 3               | HoneySyrup, FreshLemonJuice, FreshOrangeJuice                                |
+| Bellini        | 1           | Prosecco         | 1               | WhitePeachPuree                                                              |
+| BlackRussian   | 1           | Vodka            | 1               | CoffeeLiquor                                                                 |
+| BloodyMary     | 1           | Vodka            | 6               | TomatoJuice, FreshLemonJuice, WorcestershireSauce, TabascoCelerySalt, Pepper |
+| Cachanchara    | 1           | CubanAguardiente | 3               | FreshLimeJuice, RawHoney, Water                                              |
+| Caipirinha     | 1           | Cachaca          | 2               | Lime, WhiteSugar                                                             |
+| CloverClub     | 1           | Gin              | 3               | RaspberrySyrup, FreshLimeJuice, EggWhite                                     |
+| CubaLibre      | 1           | WhiteRum         | 2               | Cola, FreshLimeJuice                                                         |
+| Daiquiri       | 1           | WhiteCubanRum    | 2               | FreshLimeJuice, SuperfineSugar                                               |
+| GinFizz        | 1           | Gin              | 3               | FreshLimeJuice, SimpleSyrup, SodaWater                                       |
+| IrishCoffee    | 1           | IrishWhiskey     | 3               | HotCoffee, FreshCream, Sugar                                                 |
+| JohnCollins    | 1           | Gin              | 3               | FreshLimeJuice, SimpleSyrup, SodaWater                                       |
+| MintJulep      | 1           | BourbonWhiskey   | 2               | MintSprigs, SugarWater                                                       |
+| Mojito         | 1           | WhiteRum         | 4               | FreshLimeJuice, MintSprigs, Sugar, Water                                     |
+| PinaColada     | 1           | WhiteRum         | 2               | CoconutCream, FreshPineappleJuice                                            |
+| PlantersPunch  | 1           | JamaicanRum      | 2               | FreshLimeJuice, SugarCaneJuice                                               |
+| PiscoSour      | 1           | Pisco            | 3               | FreshLimeJuice, SimpleSyrup, RawEggWhite                                     |
+| SeaBreeze      | 1           | Vodka            | 2               | CranberryJuice, GrapefruitJuice                                              |
+| SexOnTheBeach  | 1           | Vodka            | 3               | PeachSchnapps, FreshOrangeJuice, CranberryJuice                              |
+| Stinger        | 1           | Cognac           | 1               | WhiteCremeDeMenthe                                                           |
+| TequilaSunrise | 1           | Tequila          | 2               | FreshOrangeJuice, GrenadineSyrup                                             |
+| WhiskeySour    | 1           | BourbonWhiskey   | 3               | FreshLimeJuice, SugarSyrup, EggWhite                                         |
+
+| Cocktail     | Nr. Băuturi | Băuturi                                 | Nr. Ingrediente | Ingrediente                                             |
+| ------------ | ----------- | --------------------------------------- | --------------- | ------------------------------------------------------- |
+| Americano    | 2           | BitterCampari, SweetRedVermouth         | 1               | SodWater                                                |
+| Bramble      | 2           | Gin, CremeDeMure                        | 2               | FreshLemonJuice, SugarSyrup                             |
+| BrandyCrusta | 2           | Brandy, MaraschinoLuxardo               | 4               | Curacao, FreshLemonJuice, SimpleSyrup, AromaticBiaers   |
+| Casino       | 2           | OldTomGin, MaraschinoLiqueur            | 2               | FreshLimeJuice, OrangeBiaers                            |
+| Cosmopolitan | 2           | VodkaCitron, Cointreau                  | 2               | FreshLimeJuice, CranberryJuice                          |
+| DryMartini   | 2           | Gin, DryVermouth                        | 0               | —                                                       |
+| French75     | 2           | Gin, Champagne                          | 2               | FreshLimeJuice, SugarSyrup                              |
+| GoldenDream  | 2           | Galliano, TripleSec                     | 2               | FreshOrangeJuice, FreshCream                            |
+| MaiTai       | 2           | AmberJamaicanRum, MartiniqueMolassesRum | 4               | OrangeCuracao, OrgeatSyrup, FreshLimeJuice, SimpleSyrup |
+| Margarita    | 2           | TequilaAgave, TripleSec                 | 1               | FreshlySqueezedLimeJuice                                |
+| MaryPickford | 2           | WhiteRum, MaraschinoLiqueur             | 2               | FreshPineappleJuice, GrenadineSyrup                     |
+| MonkeyGland  | 2           | DryGin, Absinthe                        | 2               | FreshOrangeJuice, GrenadineSyrup                        |
+| MoscowMule   | 2           | SmirnoffVodka, GingerBeer               | 1               | FreshLimeJuice                                          |
+| OldFashioned | 2           | Bourbon, AngosturaBiaers                | 2               | Sugar, Water                                            |
+| Paradise     | 2           | Gin, ApricotBrandy                      | 1               | FreshOrangeJuice                                        |
+| Sazerac      | 2           | Cognac, Absinthe                        | 2               | Sugar, DashesPeychaudBiaers                             |
+| Sidecar      | 2           | Cognac, TripleSec                       | 1               | FreshLimeJuice                                          |
+| WhiteLady    | 2           | Gin, TripleSec                          | 1               | FreshLimeJuice                                          |
+
+| Cocktail          | Nr. Băuturi | Băuturi                                          | Nr. Ingrediente | Ingrediente                                                        |
+| ----------------- | ----------- | ------------------------------------------------ | --------------- | ------------------------------------------------------------------ |
+| Barracuda         | 3           | GoldRum, Galliano, Prosecco                      | 2               | PineappleJuice, FreshLimeJuice                                     |
+| BetweenTheSheets  | 3           | WhiteRum, Cognac, TripleSec                      | 1               | FreshLemonJuice                                                    |
+| ChampagneCocktail | 3           | ChilledChampagne, AngosturaBitters, Cognac       | 1               | Sugar                                                              |
+| LastWord          | 3           | Gin, GreenChartreuse, MaraschinoLiqueur          | 1               | FreshLimeJuice                                                     |
+| Zombie            | 3           | JamaicanDarkRum, GoldPuertoRicanRum, DemeraraRum | 5               | FreshLimeJuice, Falernum, DonnMix, GrenadineSyrup, AngosturaBiaers |
+
+| Cocktail       | Nr. Băuturi | Băuturi                                             | Nr. Ingrediente | Ingrediente                                         |
+| -------------- | ----------- | --------------------------------------------------- | --------------- | --------------------------------------------------- |
+| CorpseReviver  | 4           | Gin, Cointreau, LilletBlanc, Absinthe               | 1               | FreshLimeJuice                                      |
+| SingaporeSling | 4           | Gin, CherryLiqueur, Cointreau, DOMBenedictUne       | 3               | FreshPineappleJuice, FreshLimeJuice, GrenadineSyrup |
+| Tuxedo         | 4           | OldTomGin, DryVermouth, MaraschinoLiqueur, Absinthe | 1               | OrangeBiaers                                        |
+| VieuxCarre     | 4           | RyeWhiskey, Cognac, SweetVermouth, DOMBenedictUne   | 1               | PeychaudBiaers                                      |
+
+| Cocktail          | Nr. Băuturi | Băuturi                                  | Nr. Ingrediente | Ingrediente                   |
+| ----------------- | ----------- | ---------------------------------------- | --------------- | ----------------------------- |
+| LongIslandIcedTea | 5           | Vodka, Cointreau, Tequila, WhiteRum, Gin | 3               | LemonJuice, SimpleSyrup, Cola |
