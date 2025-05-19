@@ -30,7 +30,7 @@ def insereazaClips2(env, s):
     """
     while s:
         fapt = s.pop()
-        print(fapt)  # Afișează faptul pentru debugging
+        #print(fapt)  # Afișează faptul pentru debugging
         env.assert_string(fapt)
     return env
 
@@ -53,7 +53,7 @@ def printeaza(dataJson):
             state, ingredient = parts
             ingredient = ingredient[0] + ingredient[1:].lower()  # Normalizează numele
             if state == "enabled":
-                print(ingredient, " ", state)
+                #print(ingredient, " ", state)
                 stiva.append(ingredient)
 
     # Configurare mediu CLIPS
@@ -108,7 +108,7 @@ def preparaCocktail(dataJson, dePreparat):
             state, ingredient = parts
             ingredient = ingredient[0] + ingredient[1:].lower()
             if state == "enabled":
-                print(ingredient, " ", state)
+                #print(ingredient, " ", state)
                 stiva.append(f"(bautura {ingredient})")
 
     # Adaugă și scopul: cocktailul de preparat

@@ -118,9 +118,9 @@ class UpdateData(Resource):
             global data
             cocktailuri, bauturi = test4.preparaCocktail(data, cocktail)
 
-            print("M-am apelat cu succesuri")
-            print(bauturi)
-            print(cocktailuri)
+            #print("M-am apelat cu succesuri")
+            #print(bauturi)
+            #print(cocktailuri)
 
             # Normalize bauturi list to lowercase
             bauturi_lower = [b.lower() for b in bauturi]
@@ -131,20 +131,20 @@ class UpdateData(Resource):
                     ingredients_store[name] = "enabled"
                     for idx,i in enumerate (data['ingredients']):
                         if name.lower() in i.lower():
-                            print("aici")
+                            #print("aici")
                             data['ingredients'][idx]=i.replace("disabled", "enabled")
-                            print(i)
+                            #print(i)
                 else:
                     ingredients_store[name] = "disabled"
                     for idx, i in enumerate(data['ingredients']):
                         if name.lower() in i.lower():
-                            print("aici")
+                            #print("aici")
                             data['ingredients'][idx] = i.replace( "enabled", "disabled")
-                            print(i)
+                            #print(i)
 
-            # force a post using data here
+
             print(data)
-            print("bla bla bla")
+            #print("bla bla bla")
             print(bauturi)
 
         # If no parameter is provided, return all
