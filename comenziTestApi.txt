@@ -1,5 +1,5 @@
 dependinte
-pip install clipspy==0.3.3
+pip install clipspy
 pip install iclips
 pip install flask
 pip install flask_restx
@@ -7,6 +7,14 @@ pip install flask_cors
 
 din folderul Server
 python app.py
+
+!! este necesar ca portul 5000 de pe host sa fie liber
+
+din folderul Client
+se deschide index.html
+utilizand aplicatia 
+
+Comenzile de mai jos rulate dintr-un terminal de windows testeaza aplicatia
 
 de testat daca merge
 curl -X POST http://127.0.0.1:5000/data/update -H "Content-Type: application/json" -d "{\"ingredients\":[\"enabled RUM\",\"enabled COLA\",\"enabled LIME\",\"enabled SUGAR\"]}"
