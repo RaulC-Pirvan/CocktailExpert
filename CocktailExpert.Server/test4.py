@@ -143,7 +143,7 @@ def printeazaAmbele(env):
     for fact in facts:
         fact_str = str(fact).replace("(", "").replace(")", "")
 
-        if "c_complet" in fact_str:
+        if "cocktailComplet" in fact_str:
             cocktail = fact_str.split()[-1]
             complete.append(cocktail)
             print(cocktail)
